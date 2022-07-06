@@ -1,7 +1,13 @@
 import React from "react";
 import QuoteCard from "./QuoteCard";
+import { useSelector } from "react-redux";
+import { removeQuote, upvoteQuote, downvoteQuote } from "./quotesSlice";
 
 function Quotes() {
+
+  const quotes = useSelector((state) => state.quotes);
+
+  console.log(quotes);
   return (
     <div>
       <hr />
@@ -12,6 +18,7 @@ function Quotes() {
       <div className="container">
         <div className="row">
           <div className="col-md-4">
+            {quotes.map((quote) => <QuoteCard quote={quote} removeQuote={removeQuote} upvoteQuote={upvoteQuote} downvoteQuote={downvoteQuote} key={quote.id}/>)}
             {/*
               TODO:
 
